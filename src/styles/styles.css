@@ -1,0 +1,174 @@
+/*
+    STYLE DESIGN NOTES
+    - might be nice to give the notes a "portrait" and "landscape" mode that
+        changes the maximum dimensions of the picture and the card's own
+        maximum dimensions to align nicely with it
+    - 
+*/
+* {
+  border: 1px solid #c7c7c7;
+}
+
+form {
+  border: 1px solid hotpink;
+  width: fit-content;
+}
+
+div {
+  border: 1px solid rgba(0, 100, 255, 0.3);
+}
+
+.menu-bar {
+  display: flex;
+}
+
+.inner-board-box {
+  background-color: lightgray;
+}
+
+.note-box {
+  background-color: white;
+  min-width: 260px;
+  height: fit-content;
+  padding: 5px;
+  margin: 10px;
+}
+.note-box:hover .note-editing {
+  opacity: 1;
+}
+.note-box h3 {
+  margin: 0;
+}
+.note-box p {
+  margin: 0;
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.vertical-content {
+  max-width: 260px;
+}
+
+.side-by-side {
+  display: flex;
+}
+
+.sbs-text-wrapper {
+  max-width: 250px;
+}
+
+.note-editing {
+  opacity: 0;
+  display: flex;
+  transition-duration: 0.25s;
+}
+
+.note-image {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.popup-wrapper {
+  width: fit-content;
+  display: flex;
+}
+.popup-wrapper:hover .formatting-buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.formatting-buttons {
+  display: none;
+  z-index: 200;
+}
+
+/* DEV NOTES:
+It'd be pretty cool if we could get this to slide out rather than 
+simply appear and disappear 
+
+its highly likely that the only satisfactory system for arranging notes
+and groups will be to let the user manually arrange them in arbitrary patterns
+
+we're going to have to bite the bullet and turn all notes/groups into draggable
+objects, and find some way to make the borders of the group stretch to fit
+the arrangements of notes and subgroups within them.
+
+this implies two things:
+    1) finding a way to let the javascript manipulate the css in real time
+    while the element is being dragged, to rearrange stuff around it, BUT
+    not making any sort of calls to the database, which would reset the page
+    2) finding a way to store these arrangements of things as an attribute
+    WITHIN the database, so that it wont just goddamn disappear when you
+    reload the page
+        > my first thought is that the data that's actually going to be stored
+        will be a set of XY coordinates representing the distance between each
+        note/group's top left corner and the top left corner of its parent element
+        > that way, every thing below an element in the hierarchy will travel
+        along with it, AND only THAT specific element's database referents have
+        to be changed, not any of its children's.
+
+        also, goddamn, it really feels like the notes ought to be smaller!
+
+also, turn the board-content entity into something that can be arbitrarily
+zoomed in and out.
+    > this implies finding a way to situate the whole thing in an element
+        that will have its own set of scrollbars, and no matter how big or small
+        the board-content element gets, it will always be contained in that
+        parent element
+
+
+
+  */
+.group {
+  border: 5px solid black;
+  border-radius: 25px;
+  margin: 10px;
+  padding: 10px;
+  position: absolute;
+  background-color: lightgreen;
+  top: 0;
+  left: 0;
+  resize: both;
+  overflow: scroll;
+}
+
+.group-title-box h2 {
+  margin: 0;
+}
+.group-title-box p {
+  margin: 0;
+}
+
+.group-content {
+  position: relative;
+}
+
+.note-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  /* background-color: black; */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 201;
+}
+
+.modal-window {
+  border: 3px solid hotpink;
+  background-color: white;
+  width: 30%;
+  margin: 20vh auto;
+  z-index: 202;
+}
+
+/*# sourceMappingURL=styles.css.map */

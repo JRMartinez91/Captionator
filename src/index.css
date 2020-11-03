@@ -11,3 +11,106 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  border: 1px solid rgb(199, 199, 199);
+  padding: 5px;
+}
+
+form{
+  border: 1px solid hotpink;
+  width: fit-content;
+}
+
+div{
+  border:1px solid rgba(0,100,255,0.3)
+}
+
+.note-image{
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.note-box{
+  width:fit-content;
+  background-color: darkgray;
+}
+
+.note-block{
+  display:flex;
+  justify-content: center;
+}
+
+.menu-bar{
+  display:flex;
+}
+
+.group{
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.modal-background{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow:auto;
+  /* background-color: black; */
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-window{
+  border:3px solid hotpink;
+  background-color: white;
+  width: 30%;
+  margin:20vh auto;
+}
+
+.group-header h2,.group-header p{
+  margin:0;
+}
+
+.delete-button{
+  background-color: red;
+  color:white;
+  font-weight: bold;
+}
+
+.delete-button-wrapper{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.delete-button-wrapper button{
+  font-size: 20px;
+  border-radius: 5px;
+  min-width: 5em;
+}
+
+.popup-wrapper{
+  width:fit-content;
+  display:flex;
+}
+
+.formatting-buttons{
+  display:none;
+}
+
+/* DEV NOTES:
+It'd be pretty cool if we could get this to slide out rather than 
+simply appear and disappear */
+.popup-wrapper:hover .formatting-buttons{
+  display:block;
+  position: absolute;
+}
+
+.side-by-side{
+  display:flex;
+}
+
+.sbs-text-wrapper{
+  max-width: 300px;
+}
